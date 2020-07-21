@@ -8,21 +8,21 @@ server.listen(process.env.PORT || 3000);
 app.get("/", function(req, res){
 	res.sendFile(__dirname + "/index.html");	
 });
-var mysql = require("mysql");
-var con = mysql.createConnection({
-    host: "156.67.222.127",
-    user: "u296529189_zbiogg",
-    password: "ZBIO2610",
-    database: "u296529189_zbiogg"
-  });
-  con.connect(function(err) {
-    if (err) throw err;
-  var sql = "SELECT * FROM messages";
-  con.query(sql, function(err, results) {
-    if (err) throw err;
-    console.log(results);
-  })
-  });
+// var mysql = require("mysql");
+// var con = mysql.createConnection({
+//     host: "156.67.222.127",
+//     user: "u296529189_zbiogg",
+//     password: "ZBIO2610",
+//     database: "u296529189_zbiogg"
+//   });
+//   con.connect(function(err) {
+//     if (err) throw err;
+//   var sql = "SELECT * FROM messages";
+//   con.query(sql, function(err, results) {
+//     if (err) throw err;
+//     console.log(results);
+//   })
+//   });
   const publicIp = require('public-ip');
  
   (async () => {
