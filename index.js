@@ -13,14 +13,14 @@ var mangUserNoti = [];
 io.sockets.on('connection', function (socket) {
 
   console.log("Co nguoi connect ne");
-  socket.on("client_send_roomID",function(data){
-	if(mangUserNoti.indexOf(data.romID)==0){
+  socket.on("client_send_noti",function(data){
+	if(mangUserNoti.indexOf(data.receiverID)==0){
 		console.log("rom da ton tai:");
 	}else{
 		console.log("create id oke:");
-		mangUserNoti.push(data.romID);
+		mangUserNoti.push(data.receiverID);
 	}
-	console.log("data: "+data.romID+" m: "+data.message);
+	console.log("nguoi nhan: "+data.receiverID+" notiID: "+data.notiID);
   });
   
 });
