@@ -4,7 +4,7 @@ src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
 <script src="/socket.io/socket.io.js"></script>
 <script>
 $(document).ready(function(){
-	var socket = io.connect("http://chatzbio.herokuapp.com:3000/");
+	var socket = io.connect("https://chatzbio.herokuapp.com:3000/");
 	
 	socket.emit("new user", "khoapham.vn");
 	
