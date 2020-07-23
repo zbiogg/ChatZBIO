@@ -14,10 +14,10 @@ io.sockets.on('connection', function (socket) {
 
   console.log("Co nguoi connect ne");
   socket.on("client_send_roomID",function(data){
-	if(mangUserNoti.indexOf(data.romID)=0){
-		console.log("create id oke:");
+	if(mangUserNoti.indexOf(data.romID)==0){
+		console.log("rom da ton tai:");
 	}else{
-		console.log("trung ID");
+		console.log("create id oke:");
 		mangUserNoti.push(data.romID);
 	}
 	console.log("data: "+data.romID+" m: "+data.message);
