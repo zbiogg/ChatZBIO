@@ -1,20 +1,13 @@
 <h1>HƯLASDASDA</h1>
 <script
-src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
-<script src="/socket.io/socket.io.js"></script>
+src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+<script src="https://chatzbio.herokuapp.com/socket.io/socket.io.js"></script>
 <script>
 $(document).ready(function(){
 	var socket = io.connect("https://chatzbio.herokuapp.com:3000/");
 	
 	socket.emit("new user", "khoapham.vn");
 	
-	socket.emit("new user", $username.val(), function(data){
-		if(data){
-			
-		}else{
-			
-		}	
-	});	
 
 	socket.on("server-gui-ve", function(data){
 		//io.sockets.emit("new message",{msg:data});
@@ -22,9 +15,7 @@ $(document).ready(function(){
 	})
 	
 	socket.on("disconnect", function(data){
-		if(!socket.username) return;
-		else
-		usernames.splice(usernames.indexOf(socket.username), 1);	
+		
 	});
 	
 });
