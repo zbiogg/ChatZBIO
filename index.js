@@ -14,7 +14,7 @@ io.sockets.on('connection', function (socket) {
 	socket.on("noti_client_id",function(cliend_id){
 		socket.join(cliend_id);
 	});
-	io.to(cliend_id).emit("test001","Đã kết nối"+cliend_id);
+	io.to(cliend_id).emit("test001","Đã kết nối".cliend_id);
   	console.log("Co nguoi connect ne");
   	socket.on("client_send_noti",function(data){
 	io.to(data.receiverID).emit("server_send_noti",{notiID: data.notiID });
