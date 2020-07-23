@@ -9,19 +9,17 @@ app.get("/", function(req, res){
 	res.sendFile(__dirname + "/index.html");	
 });
 console.log("RUNNIG");
+var mangUserNoti = [];
 io.sockets.on('connection', function (socket) {
-  
-  
+
   console.log("Co nguoi connect ne");
-  
-  io.sockets.emit('serverguitinnhan', { noidung: "okbaby" });
-  
-  socket.on('servernhantinnhan', function (data) {
-	// emit toi tat ca moi nguoi
-	io.sockets.emit('serverguitinnhan', { noidung: data });
-	
-	// emit tới máy nguoi vừa gửi
-	socket.emit('serverguitinnhan', { noidung: data });
+  socket.on("client_send_roomID",function(data){
+	// if(mangUserNoti.indexOf(data)>=0){
+	// 	console.log("create id oke:");
+	// }else{
+	// 	console.log("trung ID");
+	// }
+	console.log("data: "+data.romID+" m: "+data.message);
   });
   
 });
