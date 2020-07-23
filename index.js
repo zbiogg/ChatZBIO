@@ -13,6 +13,7 @@ var mangUserNoti = [];
 io.sockets.on('connection', function (socket) {
 	socket.on("noti_client_id",function(cliend_id){
 		socket.join(cliend_id);
+		console.log("id ket noi: "+cliend_id);
 	});
 	// io.to(cliend_id).emit("test001","Đã kết nối");
   	console.log("Co nguoi connect ne");
