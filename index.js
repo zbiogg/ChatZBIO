@@ -11,17 +11,15 @@ app.get("/", function(req, res){
 console.log("RUNNIG");
 var mangUserNoti = [];
 io.sockets.on('connection', function (socket) {
-
-  console.log("Co nguoi connect ne");
-  socket.on("client_send_noti",function(data){
-	// if(mangUserNoti.indexOf(data.receiverID)==0){
-	// 	console.log("rom da ton tai:");
-	// }else{
-	// 	console.log("create id oke:");
-	// 	mangUserNoti.push(data.receiverID);
-	// }
-	io.to(data.receiverID).emit("server_send_noti",{notiID: data.notiID});
+	socket.on("noti_client_id",function(cliend_id){
+		socket.join(cliend_id);
+	});
+	io.to(cliend_id).emit("test001","Đã kết nối"+cliend_id);
+  	console.log("Co nguoi connect ne");
+  	socket.on("client_send_noti",function(data){
+	io.to(data.receiverID).emit("server_send_noti",{notiID: data.notiID });
 	console.log("nguoi nhan: "+data.receiverID+" notiID: "+data.notiID);
   });
+  
   
 });
