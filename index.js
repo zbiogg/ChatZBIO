@@ -14,6 +14,7 @@ io.sockets.on('connection', function (socket) {
 	socket.on("noti_client_id",function(cliend_id){
 		if(mangUserNoti.indexOf(cliend_id)==0){
 			socket.join(cliend_id);
+			mangUserNoti.push(cliend_id);
 		}
 		console.log("id ket noi: "+cliend_id);
 	});
