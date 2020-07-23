@@ -14,12 +14,13 @@ io.sockets.on('connection', function (socket) {
 
   console.log("Co nguoi connect ne");
   socket.on("client_send_noti",function(data){
-	if(mangUserNoti.indexOf(data.receiverID)==0){
-		console.log("rom da ton tai:");
-	}else{
-		console.log("create id oke:");
-		mangUserNoti.push(data.receiverID);
-	}
+	// if(mangUserNoti.indexOf(data.receiverID)==0){
+	// 	console.log("rom da ton tai:");
+	// }else{
+	// 	console.log("create id oke:");
+	// 	mangUserNoti.push(data.receiverID);
+	// }
+	io.to(data.receiverID).emit("server_send_noti",data.notiID);
 	console.log("nguoi nhan: "+data.receiverID+" notiID: "+data.notiID);
   });
   
