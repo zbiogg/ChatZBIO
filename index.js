@@ -23,6 +23,11 @@ app.get("/", function(req, res){
 //     console.log(results);
 //   })
 //   });
+console.log("server running");
+io.sockets.on('connection',function(socket){
+  console.log("Co nguoi ket noi");
+
+});
   const publicIp = require('public-ip');
  
   (async () => {
