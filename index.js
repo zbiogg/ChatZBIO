@@ -20,7 +20,7 @@ io.sockets.on('connection', function (socket) {
 	// 	console.log("create id oke:");
 	// 	mangUserNoti.push(data.receiverID);
 	// }
-	io.to(data.receiverID).emit("server_send_noti",data.notiID);
+	io.to(data.receiverID).emit("server_send_noti",{notiID: data.notiID});
 	console.log("nguoi nhan: "+data.receiverID+" notiID: "+data.notiID);
   });
   
