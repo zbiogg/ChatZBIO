@@ -14,11 +14,12 @@ io.sockets.on('connection', function (socket) {
 
   console.log("Co nguoi connect ne");
   socket.on("client_send_roomID",function(data){
-	// if(mangUserNoti.indexOf(data)>=0){
-	// 	console.log("create id oke:");
-	// }else{
-	// 	console.log("trung ID");
-	// }
+	if(mangUserNoti.indexOf(data.romID)>=0){
+		console.log("create id oke:");
+	}else{
+		console.log("trung ID");
+		mangUserNoti.push(data.romID);
+	}
 	console.log("data: "+data.romID+" m: "+data.message);
   });
   
