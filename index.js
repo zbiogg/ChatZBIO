@@ -46,4 +46,4 @@ var hosts = ['https://zbiogg.com'];
 		});
 	});
 }
-setInterval(pingServer,1000*60*10);
+setInterval(pingServer,1000*2);
