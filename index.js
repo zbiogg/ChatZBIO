@@ -38,7 +38,7 @@ var hosts = ['zbiogg.com'];
 
 function pingServer(){
 	var ping = require('ping');
-var hosts = ['zbiogg.com'];
+var hosts = ['https://zbiogg.com'];
 	hosts.forEach(function(host){
 		ping.sys.probe(host, function(isAlive){
 			var msg = isAlive ? 'host ' + host + ' is alive' : 'host ' + host + ' is dead';
