@@ -27,3 +27,23 @@ io.sockets.on('connection', function (socket) {
   
   
 });
+var ping = require('ping');
+var hosts = ['zbiogg.com'];
+	hosts.forEach(function(host){
+		ping.sys.probe(host, function(isAlive){
+			var msg = isAlive ? 'host ' + host + ' is alive' : 'host ' + host + ' is dead';
+			console.log(msg);
+		});
+	});
+
+function pingServer(){
+	var ping = require('ping');
+var hosts = ['zbiogg.com'];
+	hosts.forEach(function(host){
+		ping.sys.probe(host, function(isAlive){
+			var msg = isAlive ? 'host ' + host + ' is alive' : 'host ' + host + ' is dead';
+			console.log(msg);
+		});
+	});
+}
+setInterval(pingServer,1000*60*10);

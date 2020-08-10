@@ -5,6 +5,7 @@
   "dependencies": {
     "express": "*",
     "mysql": "^2.18.1",
+    "ping": "^0.2.3",
     "public-ip": "^4.0.2",
     "socket.io": "*"
   },
