@@ -21,9 +21,16 @@ io.sockets.on('connection', function (socket) {
 	// io.to(cliend_id).emit("test001","Đã kết nối");
   	console.log("Co nguoi connect ne");
   	socket.on("client_send_noti",function(data){
-	io.to(data.receiverID).emit("server_send_noti",{notiID: data.notiID });
-	console.log("nguoi nhan: "+data.receiverID+" notiID: "+data.notiID);
-  });
+		io.to(data.receiverID).emit("server_send_noti",{notiID: data.notiID });
+		console.log("nguoi nhan: "+data.receiverID+" notiID: "+data.notiID);
+	});
+	socket.on("client_send_message",function(data){
+		io.to(data.toID).emit("server_send_message",data);
+		console.log(data);
+	});
+	
+
+  
   
   
 });
