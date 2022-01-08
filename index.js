@@ -28,6 +28,10 @@ io.sockets.on('connection', function (socket) {
 		io.to(data.toID).emit("server_send_message",data);
 		console.log(data);
 	});
+	socket.on("client_send_entering",function(data){
+		io.to(data.toID).emit("server_send_entering",data);
+		console.log(data);
+	});
 	
 
   
