@@ -26,11 +26,12 @@ io.sockets.on('connection', function (socket) {
 	});
 	socket.on("client_send_message",function(data){
 		io.to(data.toID).emit("server_send_message",data);
-		console.log(data);
+		console.log("aa"+data);
 	});
 	socket.on("client_send_entering",function(data){
-		io.to(data.toID).emit("server_send_entering",data);
 		console.log(data);
+		io.to(data.toID).emit("server_send_entering",data);
+		
 	});
 	
 
