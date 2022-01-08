@@ -3,22 +3,29 @@ var app = express();
 var server = require("http").createServer(app);
 var io = require("socket.io").listen(server);
 var fs = require("fs");
+const { off } = require("process");
 server.listen(process.env.PORT || 3000);
 
 app.get("/", function(req, res){
 	res.sendFile(__dirname + "/index.html");	
 });
 console.log("RUNNIG");
-var mangUserNoti = [];
+// var mangUserNoti = [];
+var listUserOnline = {};
 io.sockets.on('connection', function (socket) {
 	socket.on("disconnect",function(){
-		console.log("dissss");
+		delete listUserOnline[socket.id];
 	})
 	socket.on("noti_client_id",function(cliend_id){
-		if(mangUserNoti.indexOf(cliend_id)==0){
-			mangUserNoti.push(cliend_id);
+		// if(mangUserNoti.indexOf(cliend_id)==0){
+		// 	mangUserNoti.push(cliend_id);
+		// 	listUserOnline[socket.id] = cliend_id;
+		// }
+		if(!listUserOnline[socket.id]){
+			listUserOnline[socket.id] =cliend_id
 		}
 		socket.join(cliend_id);
+		io.to(cliend_id).emit("server_send_list_online",listUserOnline);
 		console.log("id ket noi: "+cliend_id);
 	});
 	// io.to(cliend_id).emit("test001","Đã kết nối");
