@@ -17,15 +17,12 @@ io.sockets.on('connection', function (socket) {
 		delete listUserOnline[socket.id];
 	})
 	socket.on("noti_client_id",function(cliend_id){
-		// if(mangUserNoti.indexOf(cliend_id)==0){
-		// 	mangUserNoti.push(cliend_id);
-		// 	listUserOnline[socket.id] = cliend_id;
-		// }
 		if(!listUserOnline[socket.id]){
 			listUserOnline[socket.id] =cliend_id
 		}
 		socket.join(cliend_id);
-		io.to(cliend_id).emit("server_send_list_online",listUserOnline);
+		// io.to(cliend_id).emit("server_send_list_online",listUserOnline);
+		io.sockets.emit("server_send_list_online",listUserOnline);
 		console.log("id ket noi: "+cliend_id);
 	});
 	// io.to(cliend_id).emit("test001","Đã kết nối");
