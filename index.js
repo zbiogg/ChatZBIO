@@ -15,6 +15,7 @@ var listUserOnline = {};
 io.sockets.on('connection', function (socket) {
 	socket.on("disconnect",function(){
 		delete listUserOnline[socket.id];
+		io.sockets.emit("server_send_list_online",listUserOnline);
 	})
 	socket.on("noti_client_id",function(cliend_id){
 		if(!listUserOnline[socket.id]){
