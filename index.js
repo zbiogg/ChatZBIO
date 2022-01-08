@@ -36,10 +36,14 @@ io.sockets.on('connection', function (socket) {
 		console.log("aa"+data);
 	});
 	socket.on("client_send_typing",function(data){
-		io.to(data.toID).emit("server_send_typing","typing");
+		io.to(data.toID).emit("server_send_typing",{
+			userID : data.fromID
+		});
 	});
 	socket.on("client_send_cancel_typing",function(data){
-		io.to(data.toID).emit("server_send_cancel_typing","cancel typing");
+		io.to(data.toID).emit("server_send_cancel_typing",{
+			userID : data.fromID
+		});
 	});
 	
 
