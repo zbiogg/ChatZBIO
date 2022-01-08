@@ -11,6 +11,9 @@ app.get("/", function(req, res){
 console.log("RUNNIG");
 var mangUserNoti = [];
 io.sockets.on('connection', function (socket) {
+	socket.on("disconnect",function(){
+		console.log("dissss");
+	})
 	socket.on("noti_client_id",function(cliend_id){
 		if(mangUserNoti.indexOf(cliend_id)==0){
 			mangUserNoti.push(cliend_id);
@@ -28,10 +31,11 @@ io.sockets.on('connection', function (socket) {
 		io.to(data.toID).emit("server_send_message",data);
 		console.log("aa"+data);
 	});
-	socket.on("client_send_entering",function(data){
-		console.log(data);
-		io.to(data.toID).emit("server_send_entering",data);
-		
+	socket.on("client_send_typing",function(data){
+		io.to(data.toID).emit("server_send_typing","typing");
+	});
+	socket.on("client_send_cancel_typing",function(data){
+		io.to(data.toID).emit("server_send_cancel_typing","cancel typing");
 	});
 	
 
